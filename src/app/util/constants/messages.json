@@ -1,0 +1,12 @@
+{
+  "title": "Vadim's opinion...",
+  "firstName": "First Name",
+  "lastName": "Last Name",
+  "age": "Age",
+  "height": "Height (cm)",
+  "gender": "Gender",
+  "nationality": "Nationality",
+  "occupation": "Occupation",
+  "politicIntersted": "Interested in politics",
+  "errorMessage": "Vadim does not have an opinion without required fields ;)"
+}

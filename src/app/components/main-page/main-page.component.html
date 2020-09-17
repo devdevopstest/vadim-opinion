@@ -1,0 +1,91 @@
+<mat-dialog-content class="mat-typography container">
+  <mat-card class="card">
+    <mat-card-title>
+      {{messages.title}}
+    </mat-card-title>
+    <form
+      class="form"
+      (submit)="onSubmit()">
+      <mat-form-field class="field">
+        <input
+          matInput
+          name="firstName"
+          [ngModel]="firstName"
+          (ngModelChange)="firstName = $event"
+          type="text"
+          placeholder="{{messages.firstName}}"
+          required />
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input
+          matInput
+          name="lastName"
+          [ngModel]="lastName"
+          (ngModelChange)="lastName = $event"
+          type="text"
+          placeholder="{{messages.lastName}}"
+          required />
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input
+          matInput
+          name="age"
+          [ngModel]="age"
+          (ngModelChange)="age = $event"
+          type="text"
+          placeholder="{{messages.age}}"
+          required />
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input
+          matInput
+          name="gender"
+          [ngModel]="gender"
+          (ngModelChange)="gender = $event"
+          type="text"
+          placeholder="{{messages.gender}}"
+          required />
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input
+          matInput
+          name="height"
+          [ngModel]="height"
+          (ngModelChange)="height = $event"
+          type="text"
+          placeholder="{{messages.height}}"
+          required />
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input
+          matInput
+          name="occupation"
+          [ngModel]="occupation"
+          (ngModelChange)="occupation = $event"
+          type="text"
+          placeholder="{{messages.occupation}}"
+          required />
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input
+          matInput
+          name="nationality"
+          [ngModel]="nationality"
+          (ngModelChange)="nationality = $event"
+          type="text"
+          placeholder="{{messages.nationality}}"
+          required />
+      </mat-form-field>
+      <mat-form-field class="field">
+        <input
+          matInput
+          name="politicInterested"
+          [ngModel]="politicInterested"
+          (ngModelChange)="politicInterested = $event"
+          type="text"
+          placeholder="{{messages.politicIntersted}}"
+          required />
+      </mat-form-field>
+    </form>
+  </mat-card>
+</mat-dialog-content>
