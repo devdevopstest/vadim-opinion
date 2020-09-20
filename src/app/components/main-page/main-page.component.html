@@ -28,8 +28,8 @@
           </mat-form-field>
           <label for="gender">{{messages.genderLabel}}</label>
           <mat-radio-group id="gender" class="gender" name="gender" [ngModel]="gender" (ngModelChange)="gender = $event">
-            <mat-radio-button value="M">M</mat-radio-button>
-            <mat-radio-button value="F">F</mat-radio-button>
+            <mat-radio-button color="primary" value="M">M</mat-radio-button>
+            <mat-radio-button color="primary" value="F">F</mat-radio-button>
           </mat-radio-group>
           <mat-form-field appearance="fill">
             <mat-label>{{messages.nationalityLabel}}</mat-label>
