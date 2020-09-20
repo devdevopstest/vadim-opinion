@@ -1,20 +1,15 @@
 FROM node:10.13.0-alpine as node
+WORKDIR /app
+COPY package.json /app/
+RUN npm install @angular/cli@6.0.8 -g
+RUN cd /app && npm install
+COPY . /app
+RUN cd /app && npm run build
 
-WORKDIR /usr/src/app
+FROM nginx:alpine
+RUN rm -rf /usr/share/nginx/html/*
+COPY .nginx/nginx.conf /etc/nginx/nginx.conf
+COPY --from=node /app/dist/vadim-opinion /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
 
-COPY package*.json ./
-
-RUN npm install
-
-COPY . .
-
-RUN npm run build
-
-# Stage 2
-FROM nginx:1.13.12-alpine
-
-COPY --from=node /usr/src/app/dist /usr/share/nginx/html
-
-COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
-CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
