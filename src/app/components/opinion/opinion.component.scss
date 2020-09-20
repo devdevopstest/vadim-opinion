@@ -1,0 +1,20 @@
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 30%;
+}
+
+.card-header {
+  display: flex;
+  justify-content: center;
+}
+
+.back-container {
+  text-align: center;
+}

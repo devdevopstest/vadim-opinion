@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -93,6 +94,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -124,6 +126,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "vadim-opinion"
+    }
+  },
+  "defaultProject": "vadim-opinion",
+  "cli": {
+    "analytics": "cceb2809-4f85-4948-b094-f66e5f518412"
+  }
 }

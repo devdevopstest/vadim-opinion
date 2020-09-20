@@ -1,91 +1,50 @@
-<mat-dialog-content class="mat-typography container">
+<div class="main">
   <mat-card class="card">
-    <mat-card-title>
-      {{messages.title}}
-    </mat-card-title>
-    <form
-      class="form"
-      (submit)="onSubmit()">
-      <mat-form-field class="field">
-        <input
-          matInput
-          name="firstName"
-          [ngModel]="firstName"
-          (ngModelChange)="firstName = $event"
-          type="text"
-          placeholder="{{messages.firstName}}"
-          required />
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input
-          matInput
-          name="lastName"
-          [ngModel]="lastName"
-          (ngModelChange)="lastName = $event"
-          type="text"
-          placeholder="{{messages.lastName}}"
-          required />
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input
-          matInput
-          name="age"
-          [ngModel]="age"
-          (ngModelChange)="age = $event"
-          type="text"
-          placeholder="{{messages.age}}"
-          required />
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input
-          matInput
-          name="gender"
-          [ngModel]="gender"
-          (ngModelChange)="gender = $event"
-          type="text"
-          placeholder="{{messages.gender}}"
-          required />
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input
-          matInput
-          name="height"
-          [ngModel]="height"
-          (ngModelChange)="height = $event"
-          type="text"
-          placeholder="{{messages.height}}"
-          required />
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input
-          matInput
-          name="occupation"
-          [ngModel]="occupation"
-          (ngModelChange)="occupation = $event"
-          type="text"
-          placeholder="{{messages.occupation}}"
-          required />
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input
-          matInput
-          name="nationality"
-          [ngModel]="nationality"
-          (ngModelChange)="nationality = $event"
-          type="text"
-          placeholder="{{messages.nationality}}"
-          required />
-      </mat-form-field>
-      <mat-form-field class="field">
-        <input
-          matInput
-          name="politicInterested"
-          [ngModel]="politicInterested"
-          (ngModelChange)="politicInterested = $event"
-          type="text"
-          placeholder="{{messages.politicIntersted}}"
-          required />
-      </mat-form-field>
-    </form>
+    <mat-card-header class="card-header">
+      <mat-card-title class="title">
+        {{messages.title}}
+      </mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="../../../assets/main.jpg">
+    <mat-card-content>
+      <form *ngIf="!loading"
+            class="form"
+            (submit)="onSubmit()">
+        <section class="inputs-container">
+          <mat-form-field>
+            <input matInput name="firstName" [ngModel]="firstName" placeholder="First Name"
+                   (ngModelChange)="firstName = $event" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput name="lastName" [ngModel]="lastName" placeholder="Last Name"
+                   (ngModelChange)="lastName = $event" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput name="age" [ngModel]="age" placeholder="Age" (ngModelChange)="age = $event" required>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput name="height" [ngModel]="height" placeholder="Height (cm)" (ngModelChange)="height = $event"
+                   required>
+          </mat-form-field>
+          <label for="gender">{{messages.genderLabel}}</label>
+          <mat-radio-group id="gender" class="gender" name="gender" [ngModel]="gender" (ngModelChange)="gender = $event">
+            <mat-radio-button value="M">M</mat-radio-button>
+            <mat-radio-button value="F">F</mat-radio-button>
+          </mat-radio-group>
+          <mat-form-field appearance="fill">
+            <mat-label>{{messages.nationalityLabel}}</mat-label>
+            <mat-select matInput [ngModel]="nationality" name="nationality" required (ngModelChange)="nationality = $event">
+              <mat-option *ngFor="let option of nationalities" [value]="option.value">{{option.value}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-error *ngIf="errors">
+            {{messages.errorMessage}}
+          </mat-error>
+          <div class="submit-container">
+            <button mat-stroked-button color="primary" type="submit">{{messages.submit}}</button>
+          </div>
+        </section>
+      </form>
+    </mat-card-content>
   </mat-card>
-</mat-dialog-content>
+</div>

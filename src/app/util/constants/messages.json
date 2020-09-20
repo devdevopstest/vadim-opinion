@@ -8,5 +8,12 @@
   "nationality": "Nationality",
   "occupation": "Occupation",
   "politicIntersted": "Interested in politics",
+  "submit": "See opinion",
+  "genderLabel": "Gender",
+  "nationalityLabel": "Choose Nationality",
+  "occupationLabel": "Choose occupation",
+  "back": "See another opinion",
+  "opinionTitleFirst": "Vadim's opinion about ",
+  "opinionTitleLast": "is: ",
   "errorMessage": "Vadim does not have an opinion without required fields ;)"
 }

@@ -1,0 +1,46 @@
+.main {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 30%;
+}
+
+.card-header {
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: xx-large;
+}
+
+.card-container {
+  box-shadow: none;
+}
+
+.section-container {
+  display: flex;
+}
+
+.section {
+  width: 100%;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.gender {
+  display: flex;
+  flex-direction: column;
+}
+
+.submit-container {
+  text-align: center;
+}
