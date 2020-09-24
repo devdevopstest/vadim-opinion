@@ -51,22 +51,33 @@ export class MainPageComponent implements OnInit {
       && this.nationality
     ) {
       if (this.gender === 'M') {
-        let options = [2, 4, 5, 6];
+        let options = [2, 4, 5, 6, 14, 19];
         this.option = this.getRandom(options);
         if (Number(this.height) <= 165) {
-          options = [3, 7];
+          options = [3, 7, 18];
           this.option = this.getRandom(options);
         }
       } else if (this.gender === 'F') {
-        const options = [8, 10, 11];
+        let options = [8, 10, 11, 14];
         this.option = this.getRandom(options);
         if (Number(this.height) <= 140) {
-          this.option = 12;
+          options = [12, 18];
+          this.option = this.getRandom(options);
         }
       }
 
       if (this.nationality === 'Hungarian') {
-        this.option = 13;
+        if (this.gender === 'M') {
+          let options = [13, 14, 16, 17, 19];
+          this.option = this.getRandom(options);
+          if (Number(this.height) <= 165) {
+            options = [15, 17];
+            this.option = this.getRandom(options);
+          }
+        } else if (this.gender === 'F') {
+          const options = [14, 16, 17];
+          this.option = this.getRandom(options);
+        }
       }
 
       if (this.firstName === 'Mihai') {
