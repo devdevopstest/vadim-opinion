@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import messages from '../../util/constants/messages.json';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -50,19 +50,21 @@ export class MainPageComponent implements OnInit {
       && this.gender
       && this.nationality
     ) {
-      if (this.gender === 'M') {
-        let options = [2, 4, 5, 6, 14, 19];
-        this.option = this.getRandom(options);
-        if (Number(this.height) <= 165) {
-          options = [3, 7, 18];
+      if (this.nationality === 'Romanian') {
+        if (this.gender === 'M') {
+          let options = [2, 4, 5, 6, 14, 19];
           this.option = this.getRandom(options);
-        }
-      } else if (this.gender === 'F') {
-        let options = [8, 10, 11, 14];
-        this.option = this.getRandom(options);
-        if (Number(this.height) <= 140) {
-          options = [12, 18];
+          if (Number(this.height) <= 165) {
+            options = [3, 7, 18];
+            this.option = this.getRandom(options);
+          }
+        } else if (this.gender === 'F') {
+          let options = [8, 10, 11, 14];
           this.option = this.getRandom(options);
+          if (Number(this.height) <= 140) {
+            options = [12, 18];
+            this.option = this.getRandom(options);
+          }
         }
       }
 
