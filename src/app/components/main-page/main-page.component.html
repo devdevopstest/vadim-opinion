@@ -1,49 +1,51 @@
 <div class="main">
   <mat-card class="card">
     <mat-card-header class="card-header">
-      <mat-card-title class="title">
-        {{messages.title}}
+      <mat-card-title [ngClass]="{'title': !submitted}">
+        <ng-template [ngIf]="!submitted" [ngIfElse]="opinion_title">
+          {{messages.title}}
+        </ng-template>
+        <ng-template #opinion_title>
+          {{messages.opinionTitleFirst}} {{firstName}} {{lastName}} {{messages.opinionTitleLast}}
+        </ng-template>
       </mat-card-title>
     </mat-card-header>
-    <img mat-card-image src="../../../assets/main.jpg">
+    <img *ngIf="!submitted" mat-card-image src="../../../assets/main.jpg">
+    <img *ngIf="submitted" mat-card-image src={{resultUrl}}>
     <mat-card-content>
-      <form *ngIf="!loading"
-            class="form"
-            (submit)="onSubmit()">
-        <section class="inputs-container">
+      <form *ngIf="!loading" class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <section class="inputs-container" *ngIf="!submitted">
           <mat-form-field>
-            <input matInput name="firstName" [ngModel]="firstName" placeholder="First Name"
-                   (ngModelChange)="firstName = $event" required>
+            <input matInput name="firstName" [(ngModel)]="firstName" placeholder="First Name" required>
           </mat-form-field>
           <mat-form-field>
-            <input matInput name="lastName" [ngModel]="lastName" placeholder="Last Name"
-                   (ngModelChange)="lastName = $event" required>
+            <input matInput name="lastName" [(ngModel)]="lastName" placeholder="Last Name" required>
           </mat-form-field>
           <mat-form-field>
-            <input matInput name="age" [ngModel]="age" placeholder="Age" (ngModelChange)="age = $event" required>
+            <input matInput name="age" [(ngModel)]="age" placeholder="Age" required>
           </mat-form-field>
           <mat-form-field>
-            <input matInput name="height" [ngModel]="height" placeholder="Height (cm)" (ngModelChange)="height = $event"
-                   required>
+            <input matInput name="height" [(ngModel)]="height" placeholder="Height (cm)" required>
           </mat-form-field>
           <label for="gender">{{messages.genderLabel}}</label>
-          <mat-radio-group id="gender" class="gender" name="gender" [ngModel]="gender" (ngModelChange)="gender = $event">
+          <mat-radio-group id="gender" class="gender" name="gender" [(ngModel)]="gender">
             <mat-radio-button color="primary" value="M">M</mat-radio-button>
             <mat-radio-button color="primary" value="F">F</mat-radio-button>
           </mat-radio-group>
           <mat-form-field appearance="fill">
             <mat-label>{{messages.nationalityLabel}}</mat-label>
-            <mat-select matInput [ngModel]="nationality" name="nationality" required (ngModelChange)="nationality = $event">
+            <mat-select matInput [(ngModel)]="nationality" name="nationality" required>
               <mat-option *ngFor="let option of nationalities" [value]="option.value">{{option.value}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-error *ngIf="errors">
-            {{messages.errorMessage}}
-          </mat-error>
-          <div class="submit-container">
-            <button mat-stroked-button color="primary" type="submit">{{messages.submit}}</button>
-          </div>
         </section>
+        <mat-error *ngIf="!f.valid && f.touched">
+          {{messages.errorMessage}}
+        </mat-error>
+        <div class="submit-container">
+          <button mat-stroked-button color="primary" type="submit"
+            [disabled]="!f.valid">{{ !submitted ? messages.submit : messages.back }}</button>
+        </div>
       </form>
     </mat-card-content>
   </mat-card>
